@@ -1,0 +1,54 @@
+        body {
+                margin:0;
+                padding:0;
+                background:url('bg.jpg') center center fixed no-repeat;
+                background-size: cover;
+                font-family: 'SimHei';
+                
+        }
+        #box {
+                border-radius: 5px;
+                background: rgba(255,255,255,0.8);
+                width: 400px;
+                text-align: center;
+                margin: 0 auto;
+                box-shadow: 2px 2px 10px #888888;
+                position: absolute;
+                top: 15%;
+        }
+        #title {
+                font-size: xx-large;
+                text-align: center;
+                color: #FEAE89;
+                margin-top: 4.5%;
+                text-shadow: 2px 2px 10px #888888;
+        }
+        #subtitle{
+                text-align: center;
+                color:#AFAFAF;
+                margin-top: 40px;
+        }
+        .login{
+                font-family: 'SimHei';
+                margin-top: 20px;
+                width: 275px;
+                height: 30px;
+                border:1px solid #888888;
+                border-radius: 3px;
+        }
+        #bogin{
+                margin-top: 20px;
+                width: 135px;
+                height: 30px;
+                font-family: 'SimHei';
+        }
+        .but{
+                margin-top: 20px;
+                width: 135px;
+                height: 30px;
+                font-family: 'SimHei';
+        }
+        label{
+                color: #AFAFAF;
+                font-size: x-small;
+        }
