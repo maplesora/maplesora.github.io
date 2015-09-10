@@ -28,27 +28,7 @@
                 color:#AFAFAF;
                 margin-top: 40px;
         }
-        .login{
-                font-family: 'SimHei';
-                margin-top: 20px;
-                width: 275px;
-                height: 30px;
-                border:1px solid #888888;
-                border-radius: 3px;
-        }
-        #bogin{
-                margin-top: 20px;
-                width: 135px;
-                height: 30px;
-                font-family: 'SimHei';
-        }
-        .but{
-                margin-top: 20px;
-                width: 135px;
-                height: 30px;
-                font-family: 'SimHei';
-        }
-        label{
+        #copyright{
                 color: #AFAFAF;
                 font-size: x-small;
         }
