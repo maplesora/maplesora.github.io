@@ -23,7 +23,12 @@
 		<br>
 		<label id="copyright">Copyright ©2015 maplesora.moe Powered By Sora</label>
 	</div>
-	<script type="text/javascript" src="sora.js"></script>
+	<script type="text/javascript">
+	$('#box').css('left',$(window).width()/2-$('#box').width()/2);
+	$(window).resize(function() {
+	$('#box').css('left',$(window).width()/2-$('#box').width()/2);
+	}); 
+	</script>
 </body>
 
 </html>
