@@ -1,1 +1,73 @@
-building
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" sizes="any" href="/maple.svg">
+	<title>Sora's Website</title>
+	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="body.css">
+	<script type="text/javascript">
+	var line = '<hr style="height:1px;border:none;border-top:1px solid #bbbbbb;width:80%" />';
+	var content = [
+		{ "title":"title1" , "text":"text1" },
+		{ "title":"title2" , "text":"text2" },
+		{ "title":"title3" , "text":"text3" },
+		{ "title":"title4" , "text":"text4" },
+		{ "title":"title5" , "text":"text5" },
+		{ "title":"title6" , "text":"text6" },
+		{ "title":"title7" , "text":"text7" },
+		{ "title":"title8" , "text":"text8" },
+		{ "title":"title9" , "text":"text9" },
+		{ "title":"title10" , "text":"text10" },
+		{ "title":"title11" , "text":"text11" },
+		{ "title":"title12" , "text":"text12" },
+		{ "title":"title13" , "text":"text13" },
+		{ "title":"title14" , "text":"text14" },
+		{ "title":"title15" , "text":"text15" },
+		{ "title":"title16" , "text":"text16" },
+		];
+	</script>
+</head>
+
+<body>
+	<div id="title">Sora's Blog</div>
+	<div id="box">
+		
+		<label id="subtitle">_(:з」∠)_</label>
+		<br><br>
+		<div id="cont">
+			<span class="article" style="width:80%">
+				<h2>嗨小朋友们大家好</h2>
+				<div class="text" style="text-align:left">
+					还记得我是谁吗
+				</div>
+				<br>
+				<hr style="height:1px;border:none;border-top:1px solid #bbbbbb;width:80%" />
+			</span>
+		</div>
+		<br>
+		<label id="copyright">Copyright ©2015 hare.ch Powered By Sora</label>
+	</div>
+	<script type="text/javascript">
+	/* 设置box位置 */
+	$('#box').css('left',$(window).width()/2-$('#box').width()/2);
+	$(window).resize(function() {
+	$('#box').css('left',$(window).width()/2-$('#box').width()/2);
+	}); 
+	
+	/* 添加blog内容 */
+	for(var i in content){
+		if(i == content.length - 1){
+			var con = '<span class="article" style="width:80%"><h2>' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br></span>';
+			$('#cont').append(con);
+			break;
+		}
+		var con = '<span class="article" style="width:80%"><h2>' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br>' + line + '</span>';
+		$('#cont').append(con);
+	}
+	</script>
+</body>
+
+</html>
