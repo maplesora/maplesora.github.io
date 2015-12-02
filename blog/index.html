@@ -7,15 +7,6 @@
 	<title>Sora's Website</title>
 	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="body.css">
-	<script type="text/javascript">
-	var line = '<hr style="height:1px;border:none;border-top:1px solid #bbbbbb;width:80%" />';
-	var content = [
-		{ "title":"title1" , "text":'text1' },
-		{ "title":"title2" , "text":"text2" },
-		{ "title":"title3" , "text":"text3" },
-		{ "title":"title4" , "text":"text4" }
-		];
-	</script>
 </head>
 
 <body>
@@ -23,7 +14,7 @@
 	<div id="box">
 		
 		<label id="subtitle">_(:з」∠)_</label>
-		<br><br>
+		<br><br><br>
 		<div id="cont" style="text-align:left">
 		</div>
 		<br>
@@ -37,14 +28,70 @@
 	}); 
 	
 	/* 添加blog内容 */
-	for(var i in content){
+	var line = '<hr style="height:1px;border:none;border-top:1px solid #bbbbbb;width:80%" />';
+	
+	$.get('/blog/article/main.txt',function(da){
+		decode(da);
+	});
+	
+	function decode(data){
+		//var dat = new Array();
+		var a = data.split('@');
+		for(var i in a){
+			var b = a[i].split('~');
+			var j = {};
+			j.time = b[0];
+			j.title = b[1];
+			var html = $.ajax({
+				url: b[2],
+				async: false
+				}).responseText; 
+				j.text = html;
+			if(i==0){
+				add(j,true,true);
+				continue;
+			}
+			else if(i==a.length-1){
+				add(j,false,false);
+				continue;
+			}
+			else{
+				add(j,true,false);
+			}
+		}
+	}
+	
+	function add(content, ifline ,first){
+		/*
+		for(var i in content){
+			if(i==0){
+			var con = '<span class="article" style="width:80%"><label class="posttime">&hearts;'+ content[i].time +'</label><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br>' + line + '</span>';
+			$('#cont').append(con);
+			continue;
+		}
 		if(i == content.length - 1){
-			var con = '<span class="article" style="width:80%"><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br></span>';
+			var con = '<span class="article" style="width:80%"><label class="posttime">'+ content[i].time +'</label><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br></span>';
 			$('#cont').append(con);
 			break;
 		}
-		var con = '<span class="article" style="width:80%"><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br>' + line + '</span>';
+		var con = '<span class="article" style="width:80%"><label class="posttime">'+ content[i].time +'</label><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br>' + line + '</span>';
 		$('#cont').append(con);
+		}
+		*/
+		if(!!line&&!!first){
+			var con = '<span class="article" style="width:80%"><label class="posttime">&hearts;'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text">' + content.text + '</div><br>' + line + '</span>';
+			$('#cont').append(con);
+			return;
+		}
+		else if(!!line&&!first){
+			var con = '<span class="article" style="width:80%"><label class="posttime">'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text">' + content.text + '</div><br>' + line + '</span>';
+			$('#cont').append(con);
+			return;
+		}
+		else if(!line&&!first){
+			var con = '<span class="article" style="width:80%"><label class="posttime">'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text">' + content.text + '</div><br></span>';
+			$('#cont').append(con);
+		}
 	}
 	</script>
 </body>
