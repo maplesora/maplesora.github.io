@@ -29,6 +29,7 @@
 	
 	/* 添加blog内容 */
 	var line = '<hr style="height:1px;border:none;border-top:1px solid #bbbbbb;width:80%" />';
+	var spinner = '<div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>';
 	
 	$.get('/blog/article/main.txt',function(da){
 		decode(da);
@@ -42,17 +43,9 @@
 			var j = {};
 			j.time = b[0];
 			j.title = b[1];
-			var html = $.ajax({
-				url: b[2],
-				async: false
-				}).responseText; 
-				j.text = html;
+			j.text = b[2];
 			if(i==0){
 				add(j,true,true);
-				continue;
-			}
-			else if(i==a.length-1){
-				add(j,false,false);
 				continue;
 			}
 			else{
@@ -62,37 +55,44 @@
 	}
 	
 	function add(content, ifline ,first){
-		/*
-		for(var i in content){
-			if(i==0){
-			var con = '<span class="article" style="width:80%"><label class="posttime">&hearts;'+ content[i].time +'</label><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br>' + line + '</span>';
-			$('#cont').append(con);
-			continue;
-		}
-		if(i == content.length - 1){
-			var con = '<span class="article" style="width:80%"><label class="posttime">'+ content[i].time +'</label><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br></span>';
-			$('#cont').append(con);
-			break;
-		}
-		var con = '<span class="article" style="width:80%"><label class="posttime">'+ content[i].time +'</label><h2 style="text-align:center">' + content[i].title + '</h2><div class="text">' + content[i].text + '</div><br>' + line + '</span>';
-		$('#cont').append(con);
-		}
-		*/
+		var id = randomString(32);
+		
 		if(!!line&&!!first){
-			var con = '<span class="article" style="width:80%"><label class="posttime">&hearts;'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text">' + content.text + '</div><br>' + line + '</span>';
+			var con = '<span class="article" style="width:80%"><label class="posttime">&hearts;'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text" id="' + id + '"></div><br>' + line + '</span>';
 			$('#cont').append(con);
+			$('#'+id).append(spinner);
+			var html = $.ajax({
+				url: content.text,
+				async: false
+				}).responseText; 
+			$('#'+id).children('.spinner').remove();
+			$('#'+id).append(html);
 			return;
 		}
 		else if(!!line&&!first){
-			var con = '<span class="article" style="width:80%"><label class="posttime">'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text">' + content.text + '</div><br>' + line + '</span>';
+			var con = '<span class="article" style="width:80%"><label class="posttime">'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text" id="' + id + '"></div><br>' + line + '</span>';
 			$('#cont').append(con);
+			$('#'+id).append(spinner);
+			var html = $.ajax({
+				url: content.text,
+				async: false
+				}).responseText; 
+			$('#'+id).children('.spinner').remove();
+			$('#'+id).append(html);
 			return;
 		}
-		else if(!line&&!first){
-			var con = '<span class="article" style="width:80%"><label class="posttime">'+ content.time +'</label><h2 style="text-align:center">' + content.title + '</h2><div class="text">' + content.text + '</div><br></span>';
-			$('#cont').append(con);
-		}
 	}
+	
+	function randomString(len) {
+		len = len || 32;
+		var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+		var maxPos = $chars.length;
+		var pwd = '';
+		for (i = 0; i < len; i++) {
+			pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+		}
+		return pwd;
+}
 	</script>
 </body>
 
