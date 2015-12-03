@@ -16,6 +16,7 @@
 		<label id="subtitle">_(:з」∠)_</label>
 		<br><br><br>
 		<div id="cont" style="text-align:left">
+			<div class="spinner" id="loading"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
 		</div>
 		<br>
 		<label id="copyright">Copyright ©2015 hare.ch Powered By Sora</label>
@@ -32,6 +33,7 @@
 	var spinner = '<div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>';
 	
 	$.get('/blog/article/main.txt',function(da){
+		$('#loading').remove();
 		decode(da);
 	});
 	
