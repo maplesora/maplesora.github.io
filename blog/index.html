@@ -1,28 +1,34 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="icon" sizes="any" href="/maple.svg">
-	<title>Sora's Website</title>
-	<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="body.css">
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="any" href="/maple.svg">
+    <title>Sora's Website</title>
+    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="body.css">
 </head>
 
 <body>
-	<div id="title">Sora's Blog</div>
-	<div id="box">
-		
-		<label id="subtitle">_(:з」∠)_</label>
-		<br><br><br>
-		<div id="cont" style="text-align:left">
-			<div class="spinner" id="loading"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>
-		</div>
-		<br>
-		<label id="copyright">Copyright ©2015-2016 hare.ch Powered By <a href="mailto:sora@hare.ch">Sora</a></label>
-	</div>
-	<script type="text/javascript">
-	/* 设置box位置 */
+    <div id="title">Sora's Blog</div>
+    <div id="box">
+
+        <label onclick="window.location.href='new/'" id="subtitle">_(:з」∠)_</label>
+        <br>
+        <br>
+        <br>
+        <div id="cont" style="text-align:left">
+            <div class="spinner" id="loading">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+        <br>
+        <label id="copyright">Copyright ©2015-2016 hare.ch Powered By <a href="mailto:sora@hare.ch">Sora</a></label>
+    </div>
+    <script type="text/javascript">
+        /* 设置box位置 */
 	$('#box').css('left',$(window).width()/2-$('#box').width()/2);
 	$(window).resize(function() {
 	$('#box').css('left',$(window).width()/2-$('#box').width()/2);
@@ -54,6 +60,11 @@
 				add(j,true,false);
 			}
 		}
+        $('img').each(function(){
+                if($(this).width() > $('.text').width()){
+                    $(this).css('width','100%');
+                }
+        });
 	}
 	
 	function add(content, ifline ,first){
@@ -94,8 +105,8 @@
 			pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
 		}
 		return pwd;
-}
-	</script>
+    }
+    </script>
 </body>
 
 </html>

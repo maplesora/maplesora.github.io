@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" sizes="any" href="maple.svg">
+        <title>Sora's Website</title>
+        <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+        <link href="resource/Squire-UI.css" rel="stylesheet" type="text/css" />
+        <link href="resource/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="resource/squire-raw.js" type="text/javascript"></script>
+        <script src="resource/Squire-UI.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="body.css">
+</head>
+
+<body>
+    <div id="title">Sora's Website</div>
+    <div id="box">
+        <div id="subtitle"></div>
+        <br>
+        <br>
+        <div id="txaa">
+        <textarea id="txac"></textarea>
+        </div>
+        <br>
+        <a id="dl" download="downlaod.html" href="" class="btn btn-warning">Export</a>
+        <br>
+        <br>
+        <label id="copyright">Copyright ©2015-2016 hare.ch Powered By <a href="mailto:sora@hare.ch">Sora</a></label>
+    </div>
+    <script type="text/javascript">
+        $('#box').css('left',$(window).width()/2-$('#box').width()/2);
+	$(window).resize(function() {
+	$('#box').css('left',$(window).width()/2-$('#box').width()/2);
+	}); 
+    
+    var texare;
+    $(document).ready(function () {
+    a = new SquireUI({replace: 'textarea#txac', height: 450});
+    });
+        $('#dl').click(function () { 
+            $('#dl').attr('href','data:text/txt;charset=utf-8,' + a.getHTML());
+            $('#dl').attr('download',new Date().getTime() + '.html');
+        });
+    </script>
+</body>
+
+</html>
