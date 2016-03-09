@@ -54,7 +54,6 @@ function add(content, ifline, first) {
         $('#' + id).append(html);
         return;
     }
-    img();
 }
 
 //随机文本
@@ -70,11 +69,5 @@ function randomString(len) {
 }
 
 function img() {
-    $('img').each(function() {
-        if ($(this).width() > $('.text').width()) {
-            $(this).css('width', '100%');
-        }
-    });
+    $('img').css('max-width',$('.text').width());
 }
-
-img();
