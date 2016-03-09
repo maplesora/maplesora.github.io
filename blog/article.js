@@ -24,11 +24,6 @@ function decode(data) {
             add(j, true, false);
         }
     }
-    $('img').each(function() {
-        if ($(this).width() > $('.text').width()) {
-            $(this).css('width', '100%');
-        }
-    });
 }
 
 function add(content, ifline, first) {
@@ -70,4 +65,12 @@ function randomString(len) {
         pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
     }
     return pwd;
+}
+
+function img() {
+    $('img').each(function() {
+        if ($(this).width() > $('.text').width()) {
+            $(this).css('width', '100%');
+        }
+    });
 }
