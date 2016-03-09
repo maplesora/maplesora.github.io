@@ -24,6 +24,7 @@ function decode(data) {
             add(j, true, false);
         }
     }
+    img();
 }
 
 function add(content, ifline, first) {
@@ -53,6 +54,7 @@ function add(content, ifline, first) {
         $('#' + id).append(html);
         return;
     }
+    img();
 }
 
 //随机文本
@@ -74,3 +76,5 @@ function img() {
         }
     });
 }
+
+img();
